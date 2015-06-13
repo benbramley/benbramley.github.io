@@ -2,7 +2,7 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://benbramley.github.io
+url: http://www.bbramley.com
 title: BBBlog
 subtitle: Bytecode Hacker
 author: Ben Bramley
@@ -19,7 +19,7 @@ date_format: "ordinal"
 subscribe_rss: /atom.xml
 subscribe_email:
 # RSS feeds can list your email address if you like
-email: benbramley@gmail.com
+email: ben@bbramley.com
 
 # ----------------------- #
 #    Jekyll & Plugins     #
@@ -94,7 +94,7 @@ disqus_short_name:
 disqus_show_comment_count: false
 
 # Google Analytics
-google_analytics_tracking_id:
+google_analytics_tracking_id: UA-28694082-1
 
 # Facebook Like
 facebook_like: false
