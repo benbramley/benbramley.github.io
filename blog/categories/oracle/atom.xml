@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Oracle | BBBlog]]></title>
+  <link href="http://www.bbramley.com/blog/categories/oracle/atom.xml" rel="self"/>
+  <link href="http://www.bbramley.com/"/>
+  <updated>2015-06-13T21:00:11+10:00</updated>
+  <id>http://www.bbramley.com/</id>
+  <author>
+    <name><![CDATA[Ben Bramley]]></name>
+    <email><![CDATA[ben@bbramley.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Switching Off Archive Log Mode in Oracle]]></title>
+    <link href="http://www.bbramley.com/blog/2011/02/24/switching-off-archive-log-mode-in-oracle/"/>
+    <updated>2011-02-24T23:10:11+11:00</updated>
+    <id>http://www.bbramley.com/blog/2011/02/24/switching-off-archive-log-mode-in-oracle</id>
+    <content type="html"><![CDATA[<p>Archive Log mode can have a large impact on the performance of your Oracle database since it logs every single change to the data. If you don’t require this level of rollback then here are the commands to switch it off:</p>
+
+<ol>
+<li>Login to sqlplus – sqlplus / as sysdba</li>
+<li>Check your current log mode to make sure you are using archive logging – select log_mode from v$database;</li>
+<li>Shutdown the database – shutdown immediate;</li>
+<li>Mount the database but do not start it for operation &ndash; startup mount;</li>
+<li>Set noarchivelog mode &ndash; alter database noarchivelog;</li>
+<li>Open the database for normal operation &ndash; alter database open;</li>
+</ol>
+
+
+<p>Done.</p>
+]]></content>
+  </entry>
+  
+</feed>

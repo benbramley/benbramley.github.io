@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Nslu2 | BBBlog]]></title>
+  <link href="http://www.bbramley.com/blog/categories/nslu2/atom.xml" rel="self"/>
+  <link href="http://www.bbramley.com/"/>
+  <updated>2015-06-13T21:00:11+10:00</updated>
+  <id>http://www.bbramley.com/</id>
+  <author>
+    <name><![CDATA[Ben Bramley]]></name>
+    <email><![CDATA[ben@bbramley.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[NSLU2 Media Server and Time Machine]]></title>
+    <link href="http://www.bbramley.com/blog/2010/03/21/nslu2-media-server-and-time-machine/"/>
+    <updated>2010-03-21T23:11:08+11:00</updated>
+    <id>http://www.bbramley.com/blog/2010/03/21/nslu2-media-server-and-time-machine</id>
+    <content type="html"><![CDATA[<p>The other day I purchased a NAS device from ebay called NSLU2 which is affectionately known as the Slug. Out of the box it allows you to plug in any USB storage device and access it over your LAN. There is a web interface where you can configure ip addresses and format the drives etc. then you can mount them as NFS volumes. However, some clever soul has managed to create a new firmware for the device which allows you to run a full blown Debian Linux installation. The article I followed to get it up and running is here &ndash; <a href="http://www.cyrius.com/debian/nslu2/">http://www.cyrius.com/debian/nslu2/</a> Currently I am using the Slug to stream movies to my Xbox 360 (via ushare), backup my Mac using Time Machine and host a couple of websites using Apache / MySQL. I have a 1TB Western Digital USB hard drive plugged into it. 10GB is allocated to the linux installation and the rest is for media.</p>
+]]></content>
+  </entry>
+  
+</feed>

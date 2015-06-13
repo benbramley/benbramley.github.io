@@ -1,105 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>BBBlog</title>
-  <meta name="author" content="Ben Bramley">
-
-  
-  <meta name="description" content="Over the past five years I&rsquo;ve worked with many large enterprises to help them deploy, manage and optimise their application performance &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><![CDATA[BBBlog]]></title>
+  <link href="http://www.bbramley.com/atom.xml" rel="self"/>
+  <link href="http://www.bbramley.com/"/>
+  <updated>2015-06-13T21:00:11+10:00</updated>
+  <id>http://www.bbramley.com/</id>
+  <author>
+    <name><![CDATA[Ben Bramley]]></name>
+    <email><![CDATA[ben@bbramley.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
   
-  <link rel="canonical" href="http://www.bbramley.com">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="BBBlog" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-28694082-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">BBBlog</a></h1>
-  
-    <h2>Bytecode Hacker</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  
-  
-</ul>
-
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/01/23/apm-market-disruptors-appdynamics-and-new-relic/">APM Market Disruptors - AppDynamics and New Relic</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-23T10:24:03+11:00" pubdate data-updated="true">Jan 23<span>rd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Over the past five years I&rsquo;ve worked with many large enterprises to help them deploy, manage and optimise their application performance toolsets (and their applications for that matter). I&rsquo;ve encountered and used a large collection of APM products like OpTier, CA Wily, HP Diagnostics and dynaTrace &ndash; I&rsquo;m always on the lookout for new application monitoring tools that enter the market. Two tools that caught my eye recently are <a href="http://www.appdynamics.com/">AppDynamics</a> and <a href="http://newrelic.com/">New Relic</a>. Both companies are based out of&nbsp;San Francisco and have years of APM DNA in their leadership team and technology. What makes them particularly eye-catching is the way they are both attacking the cost/complexity deficiencies of the more legacy APM toolsets. New Relic and AppDynamics solve these deficiencies in slightly different and innovative ways and the purpose of this blog is to provide an overview of each solution and summarize my own thoughts on the approaches each has taken to simplify and disrupt the APM market.</p>
+  <entry>
+    <title type="html"><![CDATA[APM Market Disruptors - AppDynamics and New Relic]]></title>
+    <link href="http://www.bbramley.com/blog/2012/01/23/apm-market-disruptors-appdynamics-and-new-relic/"/>
+    <updated>2012-01-23T10:24:03+11:00</updated>
+    <id>http://www.bbramley.com/blog/2012/01/23/apm-market-disruptors-appdynamics-and-new-relic</id>
+    <content type="html"><![CDATA[<p>Over the past five years I&rsquo;ve worked with many large enterprises to help them deploy, manage and optimise their application performance toolsets (and their applications for that matter). I&rsquo;ve encountered and used a large collection of APM products like OpTier, CA Wily, HP Diagnostics and dynaTrace &ndash; I&rsquo;m always on the lookout for new application monitoring tools that enter the market. Two tools that caught my eye recently are <a href="http://www.appdynamics.com/">AppDynamics</a> and <a href="http://newrelic.com/">New Relic</a>. Both companies are based out of&nbsp;San Francisco and have years of APM DNA in their leadership team and technology. What makes them particularly eye-catching is the way they are both attacking the cost/complexity deficiencies of the more legacy APM toolsets. New Relic and AppDynamics solve these deficiencies in slightly different and innovative ways and the purpose of this blog is to provide an overview of each solution and summarize my own thoughts on the approaches each has taken to simplify and disrupt the APM market.</p>
 
 <p><strong>Product Portfolio</strong></p>
 
@@ -231,42 +150,15 @@ Again, New Relic has opted for a more simplistic approach when it comes capturin
 <p>AppDynamics is a good fit for organisations that have more complex, distributed application architectures which rely solely on Java and .NET technologies. Since it offers both SaaS and on-premise options, it&rsquo;s also much more suited to companies who don&rsquo;t want to or can&rsquo;t store their data in &ldquo;the cloud&rdquo; and need to use an on premise solution.</p>
 
 <p>Give them both a try and see for yourself!</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/06/27/locking-and-unlocking-oracle-user-accounts/">Locking and Unlocking Oracle User Accounts</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-27T21:54:59+10:00" pubdate data-updated="true">Jun 27<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To lock an Oracle user account open sqlplus and execute:</p>
+  <entry>
+    <title type="html"><![CDATA[Locking and Unlocking Oracle User Accounts]]></title>
+    <link href="http://www.bbramley.com/blog/2011/06/27/locking-and-unlocking-oracle-user-accounts/"/>
+    <updated>2011-06-27T21:54:59+10:00</updated>
+    <id>http://www.bbramley.com/blog/2011/06/27/locking-and-unlocking-oracle-user-accounts</id>
+    <content type="html"><![CDATA[<p>To lock an Oracle user account open sqlplus and execute:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>ALTER USER username ACCOUNT LOCK;</span></code></pre></td></tr></table></div></figure>
@@ -279,42 +171,15 @@ Again, New Relic has opted for a more simplistic approach when it comes capturin
 
 
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/05/19/finding-blocked-oracle-sessions-and-killing-them/">Finding Blocked Oracle Sessions (and Killing Them)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-19T22:08:59+10:00" pubdate data-updated="true">May 19<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Here&rsquo;s a handy bit of SQL which will find blocked sessions in your Oracle database:</p>
+  <entry>
+    <title type="html"><![CDATA[Finding Blocked Oracle Sessions (and Killing Them)]]></title>
+    <link href="http://www.bbramley.com/blog/2011/05/19/finding-blocked-oracle-sessions-and-killing-them/"/>
+    <updated>2011-05-19T22:08:59+10:00</updated>
+    <id>http://www.bbramley.com/blog/2011/05/19/finding-blocked-oracle-sessions-and-killing-them</id>
+    <content type="html"><![CDATA[<p>Here&rsquo;s a handy bit of SQL which will find blocked sessions in your Oracle database:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -337,42 +202,15 @@ Again, New Relic has opted for a more simplistic approach when it comes capturin
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>alter system kill session 'sid,serial#';</span></code></pre></td></tr></table></div></figure>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/05/14/grabbing-a-twitter-feed-using-the-universal-feed-parser-library/">Grabbing a Twitter Feed Using the Universal Feed Parser Library</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-14T22:09:26+10:00" pubdate data-updated="true">May 14<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>When this blog was hosted on Wordpress I used a Twitter plugin which would connect to my Twitter feed and display my recent tweets. Since I recently moved over to Google App Engine I needed to recreate this plugin in Python. There is a great Python library called Universal Feed Parser (<a href="http://www.feedparser.org/">http://www.feedparser.org/</a>) which can be used to do this. It can parse every type of feed you can think of including RSS which is a format the Twitter API (<a href="http://dev.twitter.com/pages/api_overview">http://dev.twitter.com/pages/api_overview</a>) provides. Here is url to get my latest tweets in RSS format. Simply replace my screen name with yours:<a href="%20http:/api.twitter.com/1/statuses/user_timeline.rss?screen_name=benjaminbramley"> http://api.twitter.com/1/statuses/user_timeline.rss?screen_name=benjaminbramley</a></p>
+  <entry>
+    <title type="html"><![CDATA[Grabbing a Twitter Feed Using the Universal Feed Parser Library]]></title>
+    <link href="http://www.bbramley.com/blog/2011/05/14/grabbing-a-twitter-feed-using-the-universal-feed-parser-library/"/>
+    <updated>2011-05-14T22:09:26+10:00</updated>
+    <id>http://www.bbramley.com/blog/2011/05/14/grabbing-a-twitter-feed-using-the-universal-feed-parser-library</id>
+    <content type="html"><![CDATA[<p>When this blog was hosted on Wordpress I used a Twitter plugin which would connect to my Twitter feed and display my recent tweets. Since I recently moved over to Google App Engine I needed to recreate this plugin in Python. There is a great Python library called Universal Feed Parser (<a href="http://www.feedparser.org/">http://www.feedparser.org/</a>) which can be used to do this. It can parse every type of feed you can think of including RSS which is a format the Twitter API (<a href="http://dev.twitter.com/pages/api_overview">http://dev.twitter.com/pages/api_overview</a>) provides. Here is url to get my latest tweets in RSS format. Simply replace my screen name with yours:<a href="%20http:/api.twitter.com/1/statuses/user_timeline.rss?screen_name=benjaminbramley"> http://api.twitter.com/1/statuses/user_timeline.rss?screen_name=benjaminbramley</a></p>
 
 <p>There are a whole load of parameters that can be passed to the url to set various options around the feed. Check out Twitter API docs for more info. I am using a code snippet from here &ndash; <a href="http://teebes.com/blog/17/simple-python-twitter-rss-feed-parser">http://teebes.com/blog/17/simple-python-twitter-rss-feed-parser</a> &ndash; which I&rsquo;ve modified slightly to allow me to display only tweets which contain a certain hashtag:</p>
 
@@ -483,42 +321,15 @@ Again, New Relic has opted for a more simplistic approach when it comes capturin
     &lt;/ul&gt;
 {% endif %} 
 </code></pre>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/21/flex-and-xml-over-http/">Flex and XML Over HTTP</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-21T23:09:49+11:00" pubdate data-updated="true">Mar 21<span>st</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’ve recently been building a flex based GUI and wanted to populate certain UI components using some XML returned via a Java Servlet. I thought this would be very simple using the <strong>mx:xml</strong> tag. However it turns out that the <strong>mx:xml</strong> tag does not support dynamic content (it populates at compile time and does not update at runtime).</p>
+  <entry>
+    <title type="html"><![CDATA[Flex and XML Over HTTP]]></title>
+    <link href="http://www.bbramley.com/blog/2011/03/21/flex-and-xml-over-http/"/>
+    <updated>2011-03-21T23:09:49+11:00</updated>
+    <id>http://www.bbramley.com/blog/2011/03/21/flex-and-xml-over-http</id>
+    <content type="html"><![CDATA[<p>I’ve recently been building a flex based GUI and wanted to populate certain UI components using some XML returned via a Java Servlet. I thought this would be very simple using the <strong>mx:xml</strong> tag. However it turns out that the <strong>mx:xml</strong> tag does not support dynamic content (it populates at compile time and does not update at runtime).</p>
 
 <p>So instead I needed to use the <strong>mx:HTTPService</strong> tag and use this to return the XML as a variable which can then be assigned to my UI components. I also need to create methods to handle success and fail of calling the HTTP Service:</p>
 
@@ -549,46 +360,19 @@ Again, New Relic has opted for a more simplistic approach when it comes capturin
 </span><span class='line'>private function xmlResultFailure( event:FaultEvent ):void { 
 </span><span class='line'>  Alert.show( event.fault.message, "Error loading XML" );
 </span><span class='line'>} 
-</span><span class='line'>]]></span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>]]&gt;</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Here we have defined a variable xmldata to hold the xml content. We populate this data using the HTTP Service tag. We then create the UI element, passing in the XML we obtained from the Servlet. Simples.</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/02/25/staleconnectionexception/">StaleConnectionException</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-25T23:09:59+11:00" pubdate data-updated="true">Feb 25<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The <strong>StaleConnectionException</strong> comes about when an application tries to use a connection in the connection pool which is invalid.</p>
+  <entry>
+    <title type="html"><![CDATA[StaleConnectionException]]></title>
+    <link href="http://www.bbramley.com/blog/2011/02/25/staleconnectionexception/"/>
+    <updated>2011-02-25T23:09:59+11:00</updated>
+    <id>http://www.bbramley.com/blog/2011/02/25/staleconnectionexception</id>
+    <content type="html"><![CDATA[<p>The <strong>StaleConnectionException</strong> comes about when an application tries to use a connection in the connection pool which is invalid.</p>
 
 <p>An invalid connection can occur for a number of reasons however in my client&rsquo;s case the reason was due to a firewall rule change that had been made between the application server and the database. This firewall rule meant that any connections made on port 1521 (default Oracle port) would be dropped every 5 minutes. Once dropped the connection would become &lsquo;stale&rsquo; and needed to be refreshed. Unfortunately the application, running on WebSphere 6.0, did not handle this scenario very well and would not get a new connection from the pool when the <strong>StaleConnectionException</strong> was thrown.</p>
 
@@ -644,42 +428,15 @@ Again, New Relic has opted for a more simplistic approach when it comes capturin
 
 
 <p>Lesson learned here is never assume there will always be valid connections in your connection pool and cater for that in your code.</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/02/24/switching-off-archive-log-mode-in-oracle/">Switching Off Archive Log Mode in Oracle</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-24T23:10:11+11:00" pubdate data-updated="true">Feb 24<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Archive Log mode can have a large impact on the performance of your Oracle database since it logs every single change to the data. If you don’t require this level of rollback then here are the commands to switch it off:</p>
+  <entry>
+    <title type="html"><![CDATA[Switching Off Archive Log Mode in Oracle]]></title>
+    <link href="http://www.bbramley.com/blog/2011/02/24/switching-off-archive-log-mode-in-oracle/"/>
+    <updated>2011-02-24T23:10:11+11:00</updated>
+    <id>http://www.bbramley.com/blog/2011/02/24/switching-off-archive-log-mode-in-oracle</id>
+    <content type="html"><![CDATA[<p>Archive Log mode can have a large impact on the performance of your Oracle database since it logs every single change to the data. If you don’t require this level of rollback then here are the commands to switch it off:</p>
 
 <ol>
 <li>Login to sqlplus – sqlplus / as sysdba</li>
@@ -692,42 +449,15 @@ Again, New Relic has opted for a more simplistic approach when it comes capturin
 
 
 <p>Done.</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/01/24/adding-java-functionality-to-flash-builder-standalone/">Adding Java Functionality to Flash Builder Standalone</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-01-24T23:10:25+11:00" pubdate data-updated="true">Jan 24<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I was surprised whilst using Flash Builder that when I tried to open a <strong>.java</strong> file it tried to fire up XCode instead of opening the file in Flash Builder.</p>
+  <entry>
+    <title type="html"><![CDATA[Adding Java Functionality to Flash Builder Standalone]]></title>
+    <link href="http://www.bbramley.com/blog/2011/01/24/adding-java-functionality-to-flash-builder-standalone/"/>
+    <updated>2011-01-24T23:10:25+11:00</updated>
+    <id>http://www.bbramley.com/blog/2011/01/24/adding-java-functionality-to-flash-builder-standalone</id>
+    <content type="html"><![CDATA[<p>I was surprised whilst using Flash Builder that when I tried to open a <strong>.java</strong> file it tried to fire up XCode instead of opening the file in Flash Builder.</p>
 
 <p>This is because even though Flash Builder is essentially Eclipse underneath the Java support is not installed by default.</p>
 
@@ -743,42 +473,15 @@ Again, New Relic has opted for a more simplistic approach when it comes capturin
 <li>Finish the wizard Restart Flash Builder and you should be good to go with Java support.</li>
 </ol>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/01/22/adium-and-facebook-chat/">Adium and Facebook Chat</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-01-22T23:10:39+11:00" pubdate data-updated="true">Jan 22<span>nd</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The kind folks over at Facebook have now added a Jabber interface to Facebook Chat.
+  <entry>
+    <title type="html"><![CDATA[Adium and Facebook Chat]]></title>
+    <link href="http://www.bbramley.com/blog/2011/01/22/adium-and-facebook-chat/"/>
+    <updated>2011-01-22T23:10:39+11:00</updated>
+    <id>http://www.bbramley.com/blog/2011/01/22/adium-and-facebook-chat</id>
+    <content type="html"><![CDATA[<p>The kind folks over at Facebook have now added a Jabber interface to Facebook Chat.
 To use the Jabber support in Adium you first need to create a Facebook username:</p>
 
 <ol>
@@ -799,42 +502,15 @@ To use the Jabber support in Adium you first need to create a Facebook username:
 
 <p>for the Jabber ID and your regular facebook password.
 Click OK and you should now be connected to Facebook chat.</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/01/09/how-to-setup-ubuntu-10-dot-10-on-macbook-air-rev-a/">How to Setup Ubuntu 10.10 on Macbook Air Rev. A</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-01-09T23:10:49+11:00" pubdate data-updated="true">Jan 9<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>My Macbook Air is the first edition &ndash; 1.6 GHz, 80GB HD (not SSD)</p>
+  <entry>
+    <title type="html"><![CDATA[How to Setup Ubuntu 10.10 on Macbook Air Rev. A]]></title>
+    <link href="http://www.bbramley.com/blog/2011/01/09/how-to-setup-ubuntu-10-dot-10-on-macbook-air-rev-a/"/>
+    <updated>2011-01-09T23:10:49+11:00</updated>
+    <id>http://www.bbramley.com/blog/2011/01/09/how-to-setup-ubuntu-10-dot-10-on-macbook-air-rev-a</id>
+    <content type="html"><![CDATA[<p>My Macbook Air is the first edition &ndash; 1.6 GHz, 80GB HD (not SSD)</p>
 
 <p>Insert the Ubuntu CD (I have the Superdrive), reboot, hold C to boot from CD and when Ubuntu live comes double click the Install icon.</p>
 
@@ -849,161 +525,16 @@ Click OK and you should now be connected to Facebook chat.</p>
 <p>What an awesome job the grub guys have done supporting EFI too!</p>
 
 <p><strong><strong>UPDATE</strong></strong> Microphone is not working and apparently has never worked &ndash; <a href="https://bugs.launchpad.net/mactel-support/+bug/268301"> https://bugs.launchpad.net/mactel-support/+bug/268301</a></p>
-</div>
+]]></content>
+  </entry>
   
+  <entry>
+    <title type="html"><![CDATA[NSLU2 Media Server and Time Machine]]></title>
+    <link href="http://www.bbramley.com/blog/2010/03/21/nslu2-media-server-and-time-machine/"/>
+    <updated>2010-03-21T23:11:08+11:00</updated>
+    <id>http://www.bbramley.com/blog/2010/03/21/nslu2-media-server-and-time-machine</id>
+    <content type="html"><![CDATA[<p>The other day I purchased a NAS device from ebay called NSLU2 which is affectionately known as the Slug. Out of the box it allows you to plug in any USB storage device and access it over your LAN. There is a web interface where you can configure ip addresses and format the drives etc. then you can mount them as NFS volumes. However, some clever soul has managed to create a new firmware for the device which allows you to run a full blown Debian Linux installation. The article I followed to get it up and running is here &ndash; <a href="http://www.cyrius.com/debian/nslu2/">http://www.cyrius.com/debian/nslu2/</a> Currently I am using the Slug to stream movies to my Xbox 360 (via ushare), backup my Mac using Time Machine and host a couple of websites using Apache / MySQL. I have a 1TB Western Digital USB hard drive plugged into it. 10GB is allocated to the linux installation and the rest is for media.</p>
+]]></content>
+  </entry>
   
-
-
-    </article>
-  
-  <div class="pagination">
-    
-      <a class="prev" href="/blog/page/2/">&larr; Older</a>
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-   
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:www.bbramley.com" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-  
-    <section>
-  <ul id="recent_posts">
-  </ul>
-</section>
-<section>
-  <h1>About Me</h1>
-  <p>Java Developer. Splunk Ninja. APM Geek.</p> 
-</section>
-<section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2012/01/23/apm-market-disruptors-appdynamics-and-new-relic/">APM Market Disruptors - AppDynamics and New Relic</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/06/27/locking-and-unlocking-oracle-user-accounts/">Locking and Unlocking Oracle User Accounts</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/19/finding-blocked-oracle-sessions-and-killing-them/">Finding Blocked Oracle Sessions (and Killing Them)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/14/grabbing-a-twitter-feed-using-the-universal-feed-parser-library/">Grabbing a Twitter Feed Using the Universal Feed Parser Library</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/03/21/flex-and-xml-over-http/">Flex and XML Over HTTP</a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  
-  <a href="https://github.com/benbramley">@benbramley</a> on GitHub
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'benbramley',
-            count: 0,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-
-
-
-<section>
-  <h1>Latest Tweets</h1>
-  <a class="twitter-timeline" href="https://twitter.com/benjaminbramley" data-widget-id="470485592053014528">Tweets by @benjaminbramley</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-</section>
-
-
-  
-</aside>
-
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Ben Bramley -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-<script>
-  $(document).ready(function() {  
-  var stickyNavTop = $('nav').offset().top;  
-    
-  var stickyNav = function(){  
-  var scrollTop = $(window).scrollTop();  
-         
-  if (scrollTop > stickyNavTop) {   
-      $('nav').addClass('sticky');  
-  } else {  
-      $('nav').removeClass('sticky');   
-  }  
-  };  
-    
-  stickyNav();  
-    
-  $(window).scroll(function() {  
-      stickyNav();  
-  });  
-  });  
-</script>
-
-
-</body>
-</html>
+</feed>

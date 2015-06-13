@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Sql | BBBlog]]></title>
+  <link href="http://www.bbramley.com/blog/categories/sql/atom.xml" rel="self"/>
+  <link href="http://www.bbramley.com/"/>
+  <updated>2015-06-13T21:00:11+10:00</updated>
+  <id>http://www.bbramley.com/</id>
+  <author>
+    <name><![CDATA[Ben Bramley]]></name>
+    <email><![CDATA[ben@bbramley.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Locking and Unlocking Oracle User Accounts]]></title>
+    <link href="http://www.bbramley.com/blog/2011/06/27/locking-and-unlocking-oracle-user-accounts/"/>
+    <updated>2011-06-27T21:54:59+10:00</updated>
+    <id>http://www.bbramley.com/blog/2011/06/27/locking-and-unlocking-oracle-user-accounts</id>
+    <content type="html"><![CDATA[<p>To lock an Oracle user account open sqlplus and execute:
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ALTER USER username ACCOUNT LOCK;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>To unlock an Oracle user account open sqlplus and execute:
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ALTER USER username ACCOUNT UNLOCK;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Finding Blocked Oracle Sessions (and Killing Them)]]></title>
+    <link href="http://www.bbramley.com/blog/2011/05/19/finding-blocked-oracle-sessions-and-killing-them/"/>
+    <updated>2011-05-19T22:08:59+10:00</updated>
+    <id>http://www.bbramley.com/blog/2011/05/19/finding-blocked-oracle-sessions-and-killing-them</id>
+    <content type="html"><![CDATA[<p>Here&rsquo;s a handy bit of SQL which will find blocked sessions in your Oracle database:
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>select blocking_session, sid, serial#, sql_id, wait_class,seconds_in_wait
+</span><span class='line'>from v$session where blocking_session is not NULL
+</span><span class='line'>order by blocking_session;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>This returns some useful info about the blocked sessions, including how long its been blocked for and the wait class event. Wait class events will give you an indication about the root cause of the hung session i.e. what it is waiting for. Burleson has a nice intro article on Oracle wait class events here &ndash; <a href="http://www.dba-oracle.com/concepts/query_wait_events.htm">http://www.dba-oracle.com/concepts/query_wait_events.htm</a></p>
+
+<p>Once you have the sql_id from the above SQL you can view the problematic SQL query like this:
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>select sql_text from v$sql where sql_id = &lsquo;insert sql_id here&rsquo;;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>If you decide you need to kill the problematic session use the sid and serial# like this :
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>alter system kill session &lsquo;sid,serial#&rsquo;;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+</feed>

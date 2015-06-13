@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>StaleConnectionException - BBBlog</title>
+  <meta name="author" content="Ben Bramley">
+
+  
+  <meta name="description" content="The StaleConnectionException comes about when an application tries to use a connection in the connection pool which is invalid. An invalid connection &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.bbramley.com/blog/2011/02/25/staleconnectionexception">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="BBBlog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28694082-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">BBBlog</a></h1>
+  
+    <h2>Bytecode Hacker</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">StaleConnectionException</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-25T23:09:59+11:00" pubdate data-updated="true">Feb 25<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>The <strong>StaleConnectionException</strong> comes about when an application tries to use a connection in the connection pool which is invalid.</p>
+
+<p>An invalid connection can occur for a number of reasons however in my client&rsquo;s case the reason was due to a firewall rule change that had been made between the application server and the database. This firewall rule meant that any connections made on port 1521 (default Oracle port) would be dropped every 5 minutes. Once dropped the connection would become &lsquo;stale&rsquo; and needed to be refreshed. Unfortunately the application, running on WebSphere 6.0, did not handle this scenario very well and would not get a new connection from the pool when the <strong>StaleConnectionException</strong> was thrown.</p>
+
+<p>Instead if would fail horribly until the connection pool was refreshed. Then the cycle would start again. Here is an example of how to deal with this scenario:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kt">boolean</span> <span class="n">retry</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+</span><span class='line'>      <span class="k">while</span><span class="o">(</span> <span class="n">retry</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">Connection</span> <span class="n">conn1</span> <span class="o">=</span> <span class="n">ds1</span><span class="o">.</span><span class="na">getConnection</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">Statement</span> <span class="n">stmt1</span> <span class="o">=</span> <span class="n">conn1</span><span class="o">.</span><span class="na">createStatement</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">ResultSet</span> <span class="n">res</span> <span class="o">=</span> <span class="n">stmt1</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">(</span><span class="n">stmtString</span><span class="o">);</span> <span class="c1">// If all the database work was successful. </span>
+</span><span class='line'>        <span class="n">retry</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>      <span class="k">catch</span> <span class="o">(</span><span class="n">StaleConnectionException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// counter to retry a limited number of times? </span>
+</span><span class='line'>          <span class="n">retry</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span> <span class="c1">// wait? </span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>      <span class="k">catch</span> <span class="o">(</span><span class="n">SQLException</span> <span class="n">sqle</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="o">}</span> <span class="c1">// end try-catch </span>
+</span><span class='line'>      <span class="k">finally</span> <span class="o">{</span>
+</span><span class='line'>          <span class="c1">// close result sets </span>
+</span><span class='line'>          <span class="c1">// close statements </span>
+</span><span class='line'>          <span class="c1">// close connection </span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span> <span class="c1">// end while </span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="k">catch</span><span class="o">(</span> <span class="n">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'><span class="o">}</span> <span class="c1">// end try-catch </span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Lesson learned here is never assume there will always be valid connections in your connection pool and cater for that in your code.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Ben Bramley</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-25T23:09:59+11:00" pubdate data-updated="true">Feb 25<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>java</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.bbramley.com/blog/2011/02/25/staleconnectionexception/" data-via="benjaminbramley" data-counturl="http://www.bbramley.com/blog/2011/02/25/staleconnectionexception/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/02/24/switching-off-archive-log-mode-in-oracle/" title="Previous Post: Switching off Archive Log mode in Oracle">&laquo; Switching off Archive Log mode in Oracle</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/03/21/flex-and-xml-over-http/" title="Next Post: Flex and XML over HTTP">Flex and XML over HTTP &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.bbramley.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <ul id="recent_posts">
+  </ul>
+</section>
+<section>
+  <h1>About Me</h1>
+  <p>Java Developer. Splunk Ninja. APM Geek.</p> 
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/01/23/apm-market-disruptors-appdynamics-and-new-relic/">APM Market Disruptors - AppDynamics and New Relic</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/27/locking-and-unlocking-oracle-user-accounts/">Locking and Unlocking Oracle User Accounts</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/19/finding-blocked-oracle-sessions-and-killing-them/">Finding Blocked Oracle Sessions (and Killing Them)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/14/grabbing-a-twitter-feed-using-the-universal-feed-parser-library/">Grabbing a Twitter Feed Using the Universal Feed Parser Library</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/03/21/flex-and-xml-over-http/">Flex and XML Over HTTP</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/benbramley">@benbramley</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'benbramley',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <a class="twitter-timeline" href="https://twitter.com/benjaminbramley" data-widget-id="470485592053014528">Tweets by @benjaminbramley</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+</section>
+
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Ben Bramley -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>

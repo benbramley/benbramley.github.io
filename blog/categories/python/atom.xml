@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Python | BBBlog]]></title>
+  <link href="http://www.bbramley.com/blog/categories/python/atom.xml" rel="self"/>
+  <link href="http://www.bbramley.com/"/>
+  <updated>2015-06-13T21:00:11+10:00</updated>
+  <id>http://www.bbramley.com/</id>
+  <author>
+    <name><![CDATA[Ben Bramley]]></name>
+    <email><![CDATA[ben@bbramley.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Grabbing a Twitter Feed Using the Universal Feed Parser Library]]></title>
+    <link href="http://www.bbramley.com/blog/2011/05/14/grabbing-a-twitter-feed-using-the-universal-feed-parser-library/"/>
+    <updated>2011-05-14T22:09:26+10:00</updated>
+    <id>http://www.bbramley.com/blog/2011/05/14/grabbing-a-twitter-feed-using-the-universal-feed-parser-library</id>
+    <content type="html"><![CDATA[<p>When this blog was hosted on Wordpress I used a Twitter plugin which would connect to my Twitter feed and display my recent tweets. Since I recently moved over to Google App Engine I needed to recreate this plugin in Python. There is a great Python library called Universal Feed Parser (<a href="http://www.feedparser.org/">http://www.feedparser.org/</a>) which can be used to do this. It can parse every type of feed you can think of including RSS which is a format the Twitter API (<a href="http://dev.twitter.com/pages/api_overview">http://dev.twitter.com/pages/api_overview</a>) provides. Here is url to get my latest tweets in RSS format. Simply replace my screen name with yours:<a href="%20http:/api.twitter.com/1/statuses/user_timeline.rss?screen_name=benjaminbramley"> http://api.twitter.com/1/statuses/user_timeline.rss?screen_name=benjaminbramley</a></p>
+
+<p>There are a whole load of parameters that can be passed to the url to set various options around the feed. Check out Twitter API docs for more info. I am using a code snippet from here &ndash; <a href="http://teebes.com/blog/17/simple-python-twitter-rss-feed-parser">http://teebes.com/blog/17/simple-python-twitter-rss-feed-parser</a> &ndash; which I&rsquo;ve modified slightly to allow me to display only tweets which contain a certain hashtag:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">datetime</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">feedparser</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">re</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Takes</span> <span class="n">a</span> <span class="n">twitter</span> <span class="n">rss</span> <span class="n">feed</span> <span class="n">url</span><span class="p">,</span> <span class="n">optional</span> <span class="n">limit</span> <span class="ow">and</span> <span class="n">hashtag</span> <span class="nb">filter</span><span class="p">,</span> <span class="ow">and</span> <span class="n">returns</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">of</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">tweet</span> <span class="n">objects</span><span class="o">.</span> <span class="n">Each</span> <span class="n">tweet</span> <span class="nb">object</span> <span class="n">has</span> <span class="n">a</span> <span class="n">text</span> <span class="n">attribute</span> <span class="p">(</span><span class="n">html</span> <span class="n">string</span> <span class="n">of</span> <span class="n">the</span> <span class="n">tweet</span><span class="p">)</span> <span class="ow">and</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">posted</span> <span class="n">attribute</span> <span class="p">(</span><span class="n">date</span> <span class="n">which</span> <span class="n">the</span> <span class="n">tweet</span> <span class="n">was</span> <span class="n">tweeted</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">get_twitter</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">hashtag</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">twitter_entries</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class='line'><span class="n">twitterfeed</span> <span class="o">=</span> <span class="n">feedparser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span><span class='line'><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">twitterfeed</span><span class="p">[</span><span class="s">&#39;entries&#39;</span><span class="p">]:</span>
+</span><span class='line'>    <span class="c"># convert the given time format to datetime </span>
+</span><span class='line'>    <span class="n">posted_datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span> <span class="n">entry</span><span class="p">[</span><span class="s">&#39;updated_parsed&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">entry</span><span class="p">[</span><span class="s">&#39;updated_parsed&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">entry</span><span class="p">[</span><span class="s">&#39;updated_parsed&#39;</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span> <span class="n">entry</span><span class="p">[</span><span class="s">&#39;updated_parsed&#39;</span><span class="p">][</span><span class="mi">3</span><span class="p">],</span> <span class="n">entry</span><span class="p">[</span><span class="s">&#39;updated_parsed&#39;</span><span class="p">][</span><span class="mi">4</span><span class="p">],</span> <span class="n">entry</span><span class="p">[</span><span class="s">&#39;updated_parsed&#39;</span><span class="p">][</span><span class="mi">5</span><span class="p">],</span> <span class="n">entry</span><span class="p">[</span><span class="s">&#39;updated_parsed&#39;</span><span class="p">][</span><span class="mi">6</span><span class="p">],</span> <span class="p">)</span>
+</span><span class='line'>    <span class="c"># format the date to include the year if not this year </span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">posted_datetime</span><span class="o">.</span><span class="n">year</span> <span class="o">==</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">year</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">posted</span> <span class="o">=</span> <span class="n">posted_datetime</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%b </span><span class="si">%d</span><span class="s">&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="k">else</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">posted</span> <span class="o">=</span> <span class="n">posted_datetime</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%b </span><span class="si">%d</span><span class="s"> %y&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c"># remove the &quot;: &quot; that preceeds all twitter feed entries </span>
+</span><span class='line'>    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r&#39;^\w+:\s&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">entry</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">])</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c"># parse links </span>
+</span><span class='line'>    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span> <span class="s">r&quot;(http(s)?://[\w./?=%&amp;amp;\-]+)&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s">&quot;[</span><span class="si">%s</span><span class="s">](</span><span class="si">%s</span><span class="s">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">group</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">group</span><span class="p">()),</span> <span class="n">text</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c"># parse @tweeter </span>
+</span><span class='line'>    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span> <span class="s">r&#39;@(\w+)&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s">&quot;[</span><span class="si">%s</span><span class="s">](http://twitter.com/</span><span class="si">%s</span><span class="s">)&quot;</span>\ <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">group</span><span class="p">()[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">x</span><span class="o">.</span><span class="n">group</span><span class="p">()),</span> <span class="n">text</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c"># parse #hashtag </span>
+</span><span class='line'>    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span> <span class="s">r&#39;#(\w+)&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s">&quot;[</span><span class="si">%s</span><span class="s">](http://twitter.com/search?q=</span><span class="si">%%</span><span class="s">23</span><span class="si">%s</span><span class="s">)&quot;</span>\ <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">group</span><span class="p">()[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">x</span><span class="o">.</span><span class="n">group</span><span class="p">()),</span> <span class="n">text</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c">#Filter for hashtag in twitter text if set </span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">hashtag</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">hashtag</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+</span><span class='line'>            <span class="n">twitter_entries</span><span class="o">.</span><span class="n">append</span><span class="p">({</span> <span class="s">&#39;text&#39;</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span> <span class="s">&#39;posted&#39;</span><span class="p">:</span> <span class="n">posted</span><span class="p">,</span> <span class="p">})</span>
+</span><span class='line'>            <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">twitter_entries</span><span class="o">.</span><span class="n">append</span><span class="p">({</span> <span class="s">&#39;text&#39;</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span> <span class="s">&#39;posted&#39;</span><span class="p">:</span> <span class="n">posted</span><span class="p">,</span> <span class="p">})</span>
+</span><span class='line'>        <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">counter</span> <span class="o">==</span> <span class="n">limit</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">break</span>
+</span><span class='line'><span class="k">return</span> <span class="n">twitter_entries</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>To display the Tweets I pass the result of the method above into a Django template which iterates over the list and outputs the result:</p>
+
+<p></p>
+
+<pre><code>{% if twitter_list %} 
+    &lt;ul&gt;
+    &lt;li id="recentposts"&gt;
+        &lt;h2&gt;Recent Tweets&lt;/h2&gt;
+
+        &lt;ul&gt;{% for tweet in twitter_list %}   
+        &lt;li&gt;{{ tweet.text }}&lt;/li&gt; 
+            {% endfor %}&lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;/ul&gt;
+{% endif %} 
+</code></pre>
+
+<p></p>
+]]></content>
+  </entry>
+  
+</feed>

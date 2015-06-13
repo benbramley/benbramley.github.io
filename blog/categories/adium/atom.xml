@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Adium | BBBlog]]></title>
+  <link href="http://www.bbramley.com/blog/categories/adium/atom.xml" rel="self"/>
+  <link href="http://www.bbramley.com/"/>
+  <updated>2015-06-13T21:00:11+10:00</updated>
+  <id>http://www.bbramley.com/</id>
+  <author>
+    <name><![CDATA[Ben Bramley]]></name>
+    <email><![CDATA[ben@bbramley.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Adium and Facebook Chat]]></title>
+    <link href="http://www.bbramley.com/blog/2011/01/22/adium-and-facebook-chat/"/>
+    <updated>2011-01-22T23:10:39+11:00</updated>
+    <id>http://www.bbramley.com/blog/2011/01/22/adium-and-facebook-chat</id>
+    <content type="html"><![CDATA[<p>The kind folks over at Facebook have now added a Jabber interface to Facebook Chat.
+To use the Jabber support in Adium you first need to create a Facebook username:</p>
+
+<ol>
+<li>Head over to facebook.com and login.</li>
+<li>Then click on the Account dropdown menu on the top right of the screen and choose Account Settings.</li>
+<li>You will then see an option to change your username.</li>
+<li>Choose a username and save it (this means your friends can view your profile using www.facebook.com/username (just like Twitter).</li>
+</ol>
+
+
+<p>Now that you have your username, open up Adium and click:</p>
+
+<p><strong>File &ndash;> Add Account &ndash;> Jabber. </strong></p>
+
+<p>Then enter:</p>
+
+<p><strong>{yourfacebookname}@chat.facebook.com </strong></p>
+
+<p>for the Jabber ID and your regular facebook password.
+Click OK and you should now be connected to Facebook chat.</p>
+]]></content>
+  </entry>
+  
+</feed>
