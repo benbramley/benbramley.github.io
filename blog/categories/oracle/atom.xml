@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Oracle | BBBlog]]></title>
   <link href="http://www.bbramley.com/blog/categories/oracle/atom.xml" rel="self"/>
   <link href="http://www.bbramley.com/"/>
-  <updated>2015-06-13T21:45:54+10:00</updated>
+  <updated>2016-08-02T16:53:14+10:00</updated>
   <id>http://www.bbramley.com/</id>
   <author>
     <name><![CDATA[Ben Bramley]]></name>
@@ -24,9 +24,9 @@
 <li>Login to sqlplus – sqlplus / as sysdba</li>
 <li>Check your current log mode to make sure you are using archive logging – select log_mode from v$database;</li>
 <li>Shutdown the database – shutdown immediate;</li>
-<li>Mount the database but do not start it for operation &ndash; startup mount;</li>
-<li>Set noarchivelog mode &ndash; alter database noarchivelog;</li>
-<li>Open the database for normal operation &ndash; alter database open;</li>
+<li>Mount the database but do not start it for operation - startup mount;</li>
+<li>Set noarchivelog mode - alter database noarchivelog;</li>
+<li>Open the database for normal operation - alter database open;</li>
 </ol>
 
 

@@ -4,7 +4,7 @@
   <title><![CDATA[BBBlog]]></title>
   <link href="http://www.bbramley.com/atom.xml" rel="self"/>
   <link href="http://www.bbramley.com/"/>
-  <updated>2015-06-13T21:45:54+10:00</updated>
+  <updated>2016-08-02T16:53:14+10:00</updated>
   <id>http://www.bbramley.com/</id>
   <author>
     <name><![CDATA[Ben Bramley]]></name>
@@ -18,7 +18,7 @@
     <link href="http://www.bbramley.com/blog/2012/01/23/apm-market-disruptors-appdynamics-and-new-relic/"/>
     <updated>2012-01-23T10:24:03+11:00</updated>
     <id>http://www.bbramley.com/blog/2012/01/23/apm-market-disruptors-appdynamics-and-new-relic</id>
-    <content type="html"><![CDATA[<p>Over the past five years I&rsquo;ve worked with many large enterprises to help them deploy, manage and optimise their application performance toolsets (and their applications for that matter). I&rsquo;ve encountered and used a large collection of APM products like OpTier, CA Wily, HP Diagnostics and dynaTrace &ndash; I&rsquo;m always on the lookout for new application monitoring tools that enter the market. Two tools that caught my eye recently are <a href="http://www.appdynamics.com/">AppDynamics</a> and <a href="http://newrelic.com/">New Relic</a>. Both companies are based out of&nbsp;San Francisco and have years of APM DNA in their leadership team and technology. What makes them particularly eye-catching is the way they are both attacking the cost/complexity deficiencies of the more legacy APM toolsets. New Relic and AppDynamics solve these deficiencies in slightly different and innovative ways and the purpose of this blog is to provide an overview of each solution and summarize my own thoughts on the approaches each has taken to simplify and disrupt the APM market.</p>
+    <content type="html"><![CDATA[<p>Over the past five years I&rsquo;ve worked with many large enterprises to help them deploy, manage and optimise their application performance toolsets (and their applications for that matter). I&rsquo;ve encountered and used a large collection of APM products like OpTier, CA Wily, HP Diagnostics and dynaTrace - I&rsquo;m always on the lookout for new application monitoring tools that enter the market. Two tools that caught my eye recently are <a href="http://www.appdynamics.com/">AppDynamics</a> and <a href="http://newrelic.com/">New Relic</a>. Both companies are based out of&nbsp;San Francisco and have years of APM DNA in their leadership team and technology. What makes them particularly eye-catching is the way they are both attacking the cost/complexity deficiencies of the more legacy APM toolsets. New Relic and AppDynamics solve these deficiencies in slightly different and innovative ways and the purpose of this blog is to provide an overview of each solution and summarize my own thoughts on the approaches each has taken to simplify and disrupt the APM market.</p>
 
 <p><strong>Product Portfolio</strong></p>
 
@@ -40,7 +40,7 @@
 
 <p>AppDynamics deployment approach is similar to New Relic, but they&rsquo;ve opted to give customers a choice of whether to deploy using SaaS or traditional on-premise software. User&rsquo;s can register online, download and install both agents and mgmt server (if needed), before logging on and accessing their application performance data online. Customers therefore have a deployment choice as to leverage the cost/flexibility benefits of SaaS or to leverage the control/security/privacy benefits of traditional on-premise software which large enterprises often request.</p>
 
-<p>What’s really nice is that the cost and complexity of deployment is minimal with both solutions so you can be up and running in less than half an hour. Both solutions use the &ndash;<a href="http://docs.oracle.com/javase/1.5.0/docs/guide/jvmti/jvmti.html">javaagent</a> flag to load their instrumentation and the majority of configuration that you may need to do is performed through the GUI, not via editing xml/property files on the application server machines. This is very cool and saves tonnes of time.</p>
+<p>What’s really nice is that the cost and complexity of deployment is minimal with both solutions so you can be up and running in less than half an hour. Both solutions use the -<a href="http://docs.oracle.com/javase/1.5.0/docs/guide/jvmti/jvmti.html">javaagent</a> flag to load their instrumentation and the majority of configuration that you may need to do is performed through the GUI, not via editing xml/property files on the application server machines. This is very cool and saves tonnes of time.</p>
 
 <p>Rating: AppDynamics: Excellent, New Relic: Excellent</p>
 
@@ -72,13 +72,13 @@
 
 <p><img src="http://2.bp.blogspot.com/-AHD3PZfdCNI/Txaq2TqHr2I/AAAAAAAAA2Y/9usXzuuijJI/s640/newrelic_map_view.jpg" alt="" /></p>
 
-<p>New Relic &ndash; App Map</p>
+<p>New Relic - App Map</p>
 
 <p>AppDynamics also represents an application as a collection of servers. However, their monitoring capabilities seem to go one level deeper, and show the physical distributed complexity of an application and its performance, as opposed to providing a logical abstraction like New Relic. AppDynamics application flow also has the ability to overlay performance baselines to help users visualize where performance issues are occurring in the application architecture.</p>
 
 <p><img src="http://1.bp.blogspot.com/-BDaOeqN9MHM/Txk4pi91boI/AAAAAAAAA2g/ghGzRutOrno/s640/ad_map.jpg" alt="" /></p>
 
-<p>AppDynamics &ndash; Application Flow
+<p>AppDynamics - Application Flow
 Both vendors have attempted to monitor and represent the complexity of a distributed application. In simplifying this view, New Relic has opted to abstract and summarize the complexity of a distributed application and its service performance. Whereas with AppDynamics you get a sense that your looking at the complete end to end flow of an application, giving you a much wider view of its performance.</p>
 
 <p>Rating: AppDynamics: Excellent, New Relic: Good</p>
@@ -91,13 +91,13 @@ Both vendors have attempted to monitor and represent the complexity of a distrib
 
 <p><img src="http://1.bp.blogspot.com/-bI5rcVX25QY/Txaql2qJKQI/AAAAAAAAA2Q/2Ibux7FU4ZI/s640/newrelic_web_transaction_view.jpg" alt="" /></p>
 
-<p>New Relic &ndash; Web Transactions</p>
+<p>New Relic - Web Transactions</p>
 
 <p>AppDynamics does use the terminology &ldquo;Business Transactions&rdquo; to denote the applications requests it monitors, and also tries to discover the business name behind each request, so users can manage performance with business context (you can also label the transactions to give them friendly names). AppDynamics has a concept called &ldquo;Snapshots&rdquo; which is similar to New Relic &ldquo;Transaction Traces&rdquo;. However, unlike Transaction Traces, Snapshots show the entire end-to-end journey of a business transaction across a distributed application. The ability to therefore monitor and troubleshoot business transactions is more powerful.</p>
 
 <p><img src="http://1.bp.blogspot.com/-VGYsexgMavo/Txk49dFuP1I/AAAAAAAAA2o/wDbRO-UyRNs/s640/ad_transactions.jpg" alt="" /></p>
 
-<p>AppDynamics &ndash; Business Transactions
+<p>AppDynamics - Business Transactions
 To summarise, New Relic monitors web transactions but doesn&rsquo;t attempt to represent them with any business context, or report their distributed end-to-end flow. AppDynamics in comparison has strong distributed business transaction tracing, and is clearly an area they excel in. The more complex and distributed an application the more AppDynamics becomes powerful for monitoring and troubleshooting application performance.</p>
 
 <p>Rating: AppDynamics: Excellent, New Relic: Weak</p>
@@ -108,12 +108,12 @@ To summarise, New Relic monitors web transactions but doesn&rsquo;t attempt to r
 
 <p><img src="http://2.bp.blogspot.com/-iLlDqi5pD-A/TxapcagVQhI/AAAAAAAAA1w/1xeoYopn5GU/s640/newrelic_thread_profiler.jpg" alt="" /></p>
 
-<p>New Relic &ndash; Thread Profiler
+<p>New Relic - Thread Profiler
 AppDynamics automatically triggers deep diagnostics (known as &ldquo;snapshots&rdquo;) of business transactions, that deviate from their normal performance baseline or throw an error. Snapshots are unique in that they provide complete visibility of code execution latency (both common and custom interfaces) whilst managing to incur minimal overhead to the application being monitored. This approach is different to most APM vendors who balance code level visibility with overhead in production (continuous profiling vs an automated diagnostics on demand approach). This makes root cause analysis very fast with AppDynamics providing the right amount of information to troubleshoot the problem at hand. AppDynamics also provides deep visibility of the application run-time via JMX and OS metrics, it also has Java memory forensics as well to help users understand and resolve memory leaks.</p>
 
 <p><img src="http://1.bp.blogspot.com/-_IL1h_OY6Xs/Txk5NslhOXI/AAAAAAAAA2w/K3JCxfls8i0/s640/ad_call_graph.jpg" alt="" /></p>
 
-<p>AppDynamics &ndash; Snapshot
+<p>AppDynamics - Snapshot
 Again, New Relic has opted for a more simplistic approach when it comes capturing application diagnostics based on static thresholds. This is different to AppDynamics in that diagnostic data collection is complete, automated, and only triggered when the performance of a business transaction deviates from its normal baseline. AppDynamics also provides out of the box diagnostics for JMX, memory forensics, deadlocks and stall detection, something which New Relic has not chosen to offer yet.</p>
 
 <p>Rating: AppDynamics: Excellent, New Relic: Good</p>
@@ -169,8 +169,6 @@ Again, New Relic has opted for a more simplistic approach when it comes capturin
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>ALTER USER username ACCOUNT UNLOCK;</span></code></pre></td></tr></table></div></figure>
 
-
-
 ]]></content>
   </entry>
   
@@ -189,7 +187,7 @@ Again, New Relic has opted for a more simplistic approach when it comes capturin
 </span><span class='line'>order by blocking_session;</span></code></pre></td></tr></table></div></figure>
 
 
-<p>This returns some useful info about the blocked sessions, including how long its been blocked for and the wait class event. Wait class events will give you an indication about the root cause of the hung session i.e. what it is waiting for. Burleson has a nice intro article on Oracle wait class events here &ndash; <a href="http://www.dba-oracle.com/concepts/query_wait_events.htm">http://www.dba-oracle.com/concepts/query_wait_events.htm</a></p>
+<p>This returns some useful info about the blocked sessions, including how long its been blocked for and the wait class event. Wait class events will give you an indication about the root cause of the hung session i.e. what it is waiting for. Burleson has a nice intro article on Oracle wait class events here - <a href="http://www.dba-oracle.com/concepts/query_wait_events.htm">http://www.dba-oracle.com/concepts/query_wait_events.htm</a></p>
 
 <p>Once you have the sql_id from the above SQL you can view the problematic SQL query like this:</p>
 
@@ -212,7 +210,7 @@ Again, New Relic has opted for a more simplistic approach when it comes capturin
     <id>http://www.bbramley.com/blog/2011/05/14/grabbing-a-twitter-feed-using-the-universal-feed-parser-library</id>
     <content type="html"><![CDATA[<p>When this blog was hosted on Wordpress I used a Twitter plugin which would connect to my Twitter feed and display my recent tweets. Since I recently moved over to Google App Engine I needed to recreate this plugin in Python. There is a great Python library called Universal Feed Parser (<a href="http://www.feedparser.org/">http://www.feedparser.org/</a>) which can be used to do this. It can parse every type of feed you can think of including RSS which is a format the Twitter API (<a href="http://dev.twitter.com/pages/api_overview">http://dev.twitter.com/pages/api_overview</a>) provides. Here is url to get my latest tweets in RSS format. Simply replace my screen name with yours:<a href="%20http:/api.twitter.com/1/statuses/user_timeline.rss?screen_name=benjaminbramley"> http://api.twitter.com/1/statuses/user_timeline.rss?screen_name=benjaminbramley</a></p>
 
-<p>There are a whole load of parameters that can be passed to the url to set various options around the feed. Check out Twitter API docs for more info. I am using a code snippet from here &ndash; <a href="http://teebes.com/blog/17/simple-python-twitter-rss-feed-parser">http://teebes.com/blog/17/simple-python-twitter-rss-feed-parser</a> &ndash; which I&rsquo;ve modified slightly to allow me to display only tweets which contain a certain hashtag:</p>
+<p>There are a whole load of parameters that can be passed to the url to set various options around the feed. Check out Twitter API docs for more info. I am using a code snippet from here - <a href="http://teebes.com/blog/17/simple-python-twitter-rss-feed-parser">http://teebes.com/blog/17/simple-python-twitter-rss-feed-parser</a> - which I&rsquo;ve modified slightly to allow me to display only tweets which contain a certain hashtag:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -442,9 +440,9 @@ Again, New Relic has opted for a more simplistic approach when it comes capturin
 <li>Login to sqlplus – sqlplus / as sysdba</li>
 <li>Check your current log mode to make sure you are using archive logging – select log_mode from v$database;</li>
 <li>Shutdown the database – shutdown immediate;</li>
-<li>Mount the database but do not start it for operation &ndash; startup mount;</li>
-<li>Set noarchivelog mode &ndash; alter database noarchivelog;</li>
-<li>Open the database for normal operation &ndash; alter database open;</li>
+<li>Mount the database but do not start it for operation - startup mount;</li>
+<li>Set noarchivelog mode - alter database noarchivelog;</li>
+<li>Open the database for normal operation - alter database open;</li>
 </ol>
 
 
@@ -465,7 +463,7 @@ Again, New Relic has opted for a more simplistic approach when it comes capturin
 
 <ol>
 <li>Open Flash Builder</li>
-<li>Click Help &ndash; Install New Software…</li>
+<li>Click Help - Install New Software…</li>
 <li>At the top of the dialog, click “Add…” to add an update site URL</li>
 <li>Specify a name (I chose Java) and add this URL <a href="http://download.eclipse.org/releases/galileo/">http://download.eclipse.org/releases/galileo/</a></li>
 <li>Press OK.</li>
@@ -494,7 +492,7 @@ To use the Jabber support in Adium you first need to create a Facebook username:
 
 <p>Now that you have your username, open up Adium and click:</p>
 
-<p><strong>File &ndash;> Add Account &ndash;> Jabber. </strong></p>
+<p><strong>File -> Add Account -> Jabber. </strong></p>
 
 <p>Then enter:</p>
 
@@ -510,7 +508,7 @@ Click OK and you should now be connected to Facebook chat.</p>
     <link href="http://www.bbramley.com/blog/2011/01/09/how-to-setup-ubuntu-10-dot-10-on-macbook-air-rev-a/"/>
     <updated>2011-01-09T23:10:49+11:00</updated>
     <id>http://www.bbramley.com/blog/2011/01/09/how-to-setup-ubuntu-10-dot-10-on-macbook-air-rev-a</id>
-    <content type="html"><![CDATA[<p>My Macbook Air is the first edition &ndash; 1.6 GHz, 80GB HD (not SSD)</p>
+    <content type="html"><![CDATA[<p>My Macbook Air is the first edition - 1.6 GHz, 80GB HD (not SSD)</p>
 
 <p>Insert the Ubuntu CD (I have the Superdrive), reboot, hold C to boot from CD and when Ubuntu live comes double click the Install icon.</p>
 
@@ -524,7 +522,7 @@ Click OK and you should now be connected to Facebook chat.</p>
 
 <p>What an awesome job the grub guys have done supporting EFI too!</p>
 
-<p><strong><strong>UPDATE</strong></strong> Microphone is not working and apparently has never worked &ndash; <a href="https://bugs.launchpad.net/mactel-support/+bug/268301"> https://bugs.launchpad.net/mactel-support/+bug/268301</a></p>
+<p><strong><strong>UPDATE</strong></strong> Microphone is not working and apparently has never worked - <a href="https://bugs.launchpad.net/mactel-support/+bug/268301"> https://bugs.launchpad.net/mactel-support/+bug/268301</a></p>
 ]]></content>
   </entry>
   
@@ -533,7 +531,7 @@ Click OK and you should now be connected to Facebook chat.</p>
     <link href="http://www.bbramley.com/blog/2010/03/21/nslu2-media-server-and-time-machine/"/>
     <updated>2010-03-21T23:11:08+11:00</updated>
     <id>http://www.bbramley.com/blog/2010/03/21/nslu2-media-server-and-time-machine</id>
-    <content type="html"><![CDATA[<p>The other day I purchased a NAS device from ebay called NSLU2 which is affectionately known as the Slug. Out of the box it allows you to plug in any USB storage device and access it over your LAN. There is a web interface where you can configure ip addresses and format the drives etc. then you can mount them as NFS volumes. However, some clever soul has managed to create a new firmware for the device which allows you to run a full blown Debian Linux installation. The article I followed to get it up and running is here &ndash; <a href="http://www.cyrius.com/debian/nslu2/">http://www.cyrius.com/debian/nslu2/</a> Currently I am using the Slug to stream movies to my Xbox 360 (via ushare), backup my Mac using Time Machine and host a couple of websites using Apache / MySQL. I have a 1TB Western Digital USB hard drive plugged into it. 10GB is allocated to the linux installation and the rest is for media.</p>
+    <content type="html"><![CDATA[<p>The other day I purchased a NAS device from ebay called NSLU2 which is affectionately known as the Slug. Out of the box it allows you to plug in any USB storage device and access it over your LAN. There is a web interface where you can configure ip addresses and format the drives etc. then you can mount them as NFS volumes. However, some clever soul has managed to create a new firmware for the device which allows you to run a full blown Debian Linux installation. The article I followed to get it up and running is here - <a href="http://www.cyrius.com/debian/nslu2/">http://www.cyrius.com/debian/nslu2/</a> Currently I am using the Slug to stream movies to my Xbox 360 (via ushare), backup my Mac using Time Machine and host a couple of websites using Apache / MySQL. I have a 1TB Western Digital USB hard drive plugged into it. 10GB is allocated to the linux installation and the rest is for media.</p>
 ]]></content>
   </entry>
   

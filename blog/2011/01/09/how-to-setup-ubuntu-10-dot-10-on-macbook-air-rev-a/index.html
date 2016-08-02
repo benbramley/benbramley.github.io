@@ -9,7 +9,7 @@
   <meta name="author" content="Ben Bramley">
 
   
-  <meta name="description" content="My Macbook Air is the first edition &ndash; 1.6 GHz, 80GB HD (not SSD) Insert the Ubuntu CD (I have the Superdrive), reboot, hold C to boot from CD &hellip;">
+  <meta name="description" content="My Macbook Air is the first edition - 1.6 GHz, 80GB HD (not SSD) Insert the Ubuntu CD (I have the Superdrive), reboot, hold C to boot from CD and &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,13 +18,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.bbramley.com/blog/2011/01/09/how-to-setup-ubuntu-10-dot-10-on-macbook-air-rev-a">
+  <link rel="canonical" href="http://www.bbramley.com/blog/2011/01/09/how-to-setup-ubuntu-10-dot-10-on-macbook-air-rev-a/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="BBBlog" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/boomerang.js" type="text/javascript"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
@@ -56,10 +57,17 @@
 
 </header>
   <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
   
 </ul>
-
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="www.bbramley.com">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
@@ -82,21 +90,14 @@
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2011-01-09T23:10:49+11:00" pubdate data-updated="true">Jan 9<span>th</span>, 2011</time>
+<time class='entry-date' datetime='2011-01-09T23:10:49+11:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>11:10 pm</span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>My Macbook Air is the first edition &ndash; 1.6 GHz, 80GB HD (not SSD)</p>
+<div class="entry-content"><p>My Macbook Air is the first edition - 1.6 GHz, 80GB HD (not SSD)</p>
 
 <p>Insert the Ubuntu CD (I have the Superdrive), reboot, hold C to boot from CD and when Ubuntu live comes double click the Install icon.</p>
 
@@ -110,7 +111,7 @@
 
 <p>What an awesome job the grub guys have done supporting EFI too!</p>
 
-<p><strong><strong>UPDATE</strong></strong> Microphone is not working and apparently has never worked &ndash; <a href="https://bugs.launchpad.net/mactel-support/+bug/268301"> https://bugs.launchpad.net/mactel-support/+bug/268301</a></p>
+<p><strong><strong>UPDATE</strong></strong> Microphone is not working and apparently has never worked - <a href="https://bugs.launchpad.net/mactel-support/+bug/268301"> https://bugs.launchpad.net/mactel-support/+bug/268301</a></p>
 </div>
 
 
@@ -126,14 +127,7 @@
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2011-01-09T23:10:49+11:00" pubdate data-updated="true">Jan 9<span>th</span>, 2011</time>
+<time class='entry-date' datetime='2011-01-09T23:10:49+11:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>11:10 pm</span></time>
       
 
 <span class="categories">
@@ -167,15 +161,7 @@
 
 </div>
 
-  <aside class="sidebar">
-   
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:www.bbramley.com" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
+<aside class="sidebar">
   
     <section>
   <ul id="recent_posts">
@@ -257,11 +243,10 @@
 </aside>
 
 
-
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Ben Bramley -
+  Copyright &copy; 2016 - Ben Bramley -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
@@ -306,6 +291,18 @@
       stickyNav();  
   });  
   });  
+</script>
+
+<script type="text/javascript">
+    BOOMR.init({
+    beacon_url: 'http://splk.bbramley.com/beacon',
+    site_domain: "bbramley.com",
+    user_ip: "127.0.0.1",
+    BW: { enabled: false,
+          base_url: "https://www.google.com/images/srpr/logo11w.png",
+          cookie: "BW"
+        }
+    });
 </script>
 
 

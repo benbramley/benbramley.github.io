@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Flex | BBBlog]]></title>
   <link href="http://www.bbramley.com/blog/categories/flex/atom.xml" rel="self"/>
   <link href="http://www.bbramley.com/"/>
-  <updated>2015-06-13T21:45:54+10:00</updated>
+  <updated>2016-08-02T16:53:14+10:00</updated>
   <id>http://www.bbramley.com/</id>
   <author>
     <name><![CDATA[Ben Bramley]]></name>
@@ -22,7 +22,7 @@
 
 <p>So instead I needed to use the <strong>mx:HTTPService</strong> tag and use this to return the XML as a variable which can then be assigned to my UI components. I also need to create methods to handle success and fail of calling the HTTP Service:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -36,38 +36,20 @@
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>![CDATA[
 </span><span class='line'>private var xmldata:XML;
-</span><span class='line'>private function initData():void {&lt;/p>
+</span><span class='line'>private function initData():void {
+</span><span class='line'>    uielement = new UIElement(xmldata);
+</span><span class='line'>}&lt;/p>
 </span><span class='line'>
-</span><span class='line'>&lt;pre>&lt;code>uielement = new UIElement(xmldata);
-</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>&lt;p>private function xmlResultSuccess( event:ResultEvent ):void {
+</span><span class='line'>    xmldata = event.result as XML; initData();
+</span><span class='line'>}&lt;/p>
 </span><span class='line'>
-</span><span class='line'>&lt;p>}&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;p>private function xmlResultSuccess( event:ResultEvent ):void {&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;pre>&lt;code>xmldata = event.result as XML; initData(); 
-</span><span class='line'>&lt;/code>&lt;/pre>
-</span><span class='line'>
-</span><span class='line'>&lt;p>}&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;p>private function xmlResultFailure( event:FaultEvent ):void {&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;pre>&lt;code>Alert.show( event.fault.message, "Error loading XML" );
-</span><span class='line'>&lt;/code>&lt;/pre>
-</span><span class='line'>
-</span><span class='line'>&lt;p>}
-</span><span class='line'>]]&gt;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span><span class='line'>&lt;p>private function xmlResultFailure( event:FaultEvent ):void {
+</span><span class='line'>    Alert.show( event.fault.message, &ldquo;Error loading XML&rdquo; );
+</span><span class='line'>}
+</span><span class='line'>]]&gt;</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Here we have defined a variable xmldata to hold the xml content. We populate this data using the HTTP Service tag. We then create the UI element, passing in the XML we obtained from the Servlet. Simples.</p>
 ]]></content>
@@ -86,7 +68,7 @@
 
 <ol>
 <li>Open Flash Builder</li>
-<li>Click Help &ndash; Install New Software…</li>
+<li>Click Help - Install New Software…</li>
 <li>At the top of the dialog, click “Add…” to add an update site URL</li>
 <li>Specify a name (I chose Java) and add this URL <a href="http://download.eclipse.org/releases/galileo/">http://download.eclipse.org/releases/galileo/</a></li>
 <li>Press OK.</li>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Apm | BBBlog]]></title>
   <link href="http://www.bbramley.com/blog/categories/apm/atom.xml" rel="self"/>
   <link href="http://www.bbramley.com/"/>
-  <updated>2015-06-13T21:45:54+10:00</updated>
+  <updated>2016-08-02T16:53:14+10:00</updated>
   <id>http://www.bbramley.com/</id>
   <author>
     <name><![CDATA[Ben Bramley]]></name>
@@ -18,7 +18,7 @@
     <link href="http://www.bbramley.com/blog/2012/01/23/apm-market-disruptors-appdynamics-and-new-relic/"/>
     <updated>2012-01-23T10:24:03+11:00</updated>
     <id>http://www.bbramley.com/blog/2012/01/23/apm-market-disruptors-appdynamics-and-new-relic</id>
-    <content type="html"><![CDATA[<p>Over the past five years I&rsquo;ve worked with many large enterprises to help them deploy, manage and optimise their application performance toolsets (and their applications for that matter). I&rsquo;ve encountered and used a large collection of APM products like OpTier, CA Wily, HP Diagnostics and dynaTrace &ndash; I&rsquo;m always on the lookout for new application monitoring tools that enter the market. Two tools that caught my eye recently are <a href="http://www.appdynamics.com/">AppDynamics</a> and <a href="http://newrelic.com/">New Relic</a>. Both companies are based out of&nbsp;San Francisco and have years of APM DNA in their leadership team and technology. What makes them particularly eye-catching is the way they are both attacking the cost/complexity deficiencies of the more legacy APM toolsets. New Relic and AppDynamics solve these deficiencies in slightly different and innovative ways and the purpose of this blog is to provide an overview of each solution and summarize my own thoughts on the approaches each has taken to simplify and disrupt the APM market.</p>
+    <content type="html"><![CDATA[<p>Over the past five years I&rsquo;ve worked with many large enterprises to help them deploy, manage and optimise their application performance toolsets (and their applications for that matter). I&rsquo;ve encountered and used a large collection of APM products like OpTier, CA Wily, HP Diagnostics and dynaTrace - I&rsquo;m always on the lookout for new application monitoring tools that enter the market. Two tools that caught my eye recently are <a href="http://www.appdynamics.com/">AppDynamics</a> and <a href="http://newrelic.com/">New Relic</a>. Both companies are based out of&nbsp;San Francisco and have years of APM DNA in their leadership team and technology. What makes them particularly eye-catching is the way they are both attacking the cost/complexity deficiencies of the more legacy APM toolsets. New Relic and AppDynamics solve these deficiencies in slightly different and innovative ways and the purpose of this blog is to provide an overview of each solution and summarize my own thoughts on the approaches each has taken to simplify and disrupt the APM market.</p>
 
 <p><strong>Product Portfolio</strong></p>
 
@@ -40,7 +40,7 @@
 
 <p>AppDynamics deployment approach is similar to New Relic, but they&rsquo;ve opted to give customers a choice of whether to deploy using SaaS or traditional on-premise software. User&rsquo;s can register online, download and install both agents and mgmt server (if needed), before logging on and accessing their application performance data online. Customers therefore have a deployment choice as to leverage the cost/flexibility benefits of SaaS or to leverage the control/security/privacy benefits of traditional on-premise software which large enterprises often request.</p>
 
-<p>What’s really nice is that the cost and complexity of deployment is minimal with both solutions so you can be up and running in less than half an hour. Both solutions use the &ndash;<a href="http://docs.oracle.com/javase/1.5.0/docs/guide/jvmti/jvmti.html">javaagent</a> flag to load their instrumentation and the majority of configuration that you may need to do is performed through the GUI, not via editing xml/property files on the application server machines. This is very cool and saves tonnes of time.</p>
+<p>What’s really nice is that the cost and complexity of deployment is minimal with both solutions so you can be up and running in less than half an hour. Both solutions use the -<a href="http://docs.oracle.com/javase/1.5.0/docs/guide/jvmti/jvmti.html">javaagent</a> flag to load their instrumentation and the majority of configuration that you may need to do is performed through the GUI, not via editing xml/property files on the application server machines. This is very cool and saves tonnes of time.</p>
 
 <p>Rating: AppDynamics: Excellent, New Relic: Excellent</p>
 
@@ -72,13 +72,13 @@
 
 <p><img src="http://2.bp.blogspot.com/-AHD3PZfdCNI/Txaq2TqHr2I/AAAAAAAAA2Y/9usXzuuijJI/s640/newrelic_map_view.jpg" alt="" /></p>
 
-<p>New Relic &ndash; App Map</p>
+<p>New Relic - App Map</p>
 
 <p>AppDynamics also represents an application as a collection of servers. However, their monitoring capabilities seem to go one level deeper, and show the physical distributed complexity of an application and its performance, as opposed to providing a logical abstraction like New Relic. AppDynamics application flow also has the ability to overlay performance baselines to help users visualize where performance issues are occurring in the application architecture.</p>
 
 <p><img src="http://1.bp.blogspot.com/-BDaOeqN9MHM/Txk4pi91boI/AAAAAAAAA2g/ghGzRutOrno/s640/ad_map.jpg" alt="" /></p>
 
-<p>AppDynamics &ndash; Application Flow
+<p>AppDynamics - Application Flow
 Both vendors have attempted to monitor and represent the complexity of a distributed application. In simplifying this view, New Relic has opted to abstract and summarize the complexity of a distributed application and its service performance. Whereas with AppDynamics you get a sense that your looking at the complete end to end flow of an application, giving you a much wider view of its performance.</p>
 
 <p>Rating: AppDynamics: Excellent, New Relic: Good</p>
@@ -91,13 +91,13 @@ Both vendors have attempted to monitor and represent the complexity of a distrib
 
 <p><img src="http://1.bp.blogspot.com/-bI5rcVX25QY/Txaql2qJKQI/AAAAAAAAA2Q/2Ibux7FU4ZI/s640/newrelic_web_transaction_view.jpg" alt="" /></p>
 
-<p>New Relic &ndash; Web Transactions</p>
+<p>New Relic - Web Transactions</p>
 
 <p>AppDynamics does use the terminology &ldquo;Business Transactions&rdquo; to denote the applications requests it monitors, and also tries to discover the business name behind each request, so users can manage performance with business context (you can also label the transactions to give them friendly names). AppDynamics has a concept called &ldquo;Snapshots&rdquo; which is similar to New Relic &ldquo;Transaction Traces&rdquo;. However, unlike Transaction Traces, Snapshots show the entire end-to-end journey of a business transaction across a distributed application. The ability to therefore monitor and troubleshoot business transactions is more powerful.</p>
 
 <p><img src="http://1.bp.blogspot.com/-VGYsexgMavo/Txk49dFuP1I/AAAAAAAAA2o/wDbRO-UyRNs/s640/ad_transactions.jpg" alt="" /></p>
 
-<p>AppDynamics &ndash; Business Transactions
+<p>AppDynamics - Business Transactions
 To summarise, New Relic monitors web transactions but doesn&rsquo;t attempt to represent them with any business context, or report their distributed end-to-end flow. AppDynamics in comparison has strong distributed business transaction tracing, and is clearly an area they excel in. The more complex and distributed an application the more AppDynamics becomes powerful for monitoring and troubleshooting application performance.</p>
 
 <p>Rating: AppDynamics: Excellent, New Relic: Weak</p>
@@ -108,12 +108,12 @@ To summarise, New Relic monitors web transactions but doesn&rsquo;t attempt to r
 
 <p><img src="http://2.bp.blogspot.com/-iLlDqi5pD-A/TxapcagVQhI/AAAAAAAAA1w/1xeoYopn5GU/s640/newrelic_thread_profiler.jpg" alt="" /></p>
 
-<p>New Relic &ndash; Thread Profiler
+<p>New Relic - Thread Profiler
 AppDynamics automatically triggers deep diagnostics (known as &ldquo;snapshots&rdquo;) of business transactions, that deviate from their normal performance baseline or throw an error. Snapshots are unique in that they provide complete visibility of code execution latency (both common and custom interfaces) whilst managing to incur minimal overhead to the application being monitored. This approach is different to most APM vendors who balance code level visibility with overhead in production (continuous profiling vs an automated diagnostics on demand approach). This makes root cause analysis very fast with AppDynamics providing the right amount of information to troubleshoot the problem at hand. AppDynamics also provides deep visibility of the application run-time via JMX and OS metrics, it also has Java memory forensics as well to help users understand and resolve memory leaks.</p>
 
 <p><img src="http://1.bp.blogspot.com/-_IL1h_OY6Xs/Txk5NslhOXI/AAAAAAAAA2w/K3JCxfls8i0/s640/ad_call_graph.jpg" alt="" /></p>
 
-<p>AppDynamics &ndash; Snapshot
+<p>AppDynamics - Snapshot
 Again, New Relic has opted for a more simplistic approach when it comes capturing application diagnostics based on static thresholds. This is different to AppDynamics in that diagnostic data collection is complete, automated, and only triggered when the performance of a business transaction deviates from its normal baseline. AppDynamics also provides out of the box diagnostics for JMX, memory forensics, deadlocks and stall detection, something which New Relic has not chosen to offer yet.</p>
 
 <p>Rating: AppDynamics: Excellent, New Relic: Good</p>

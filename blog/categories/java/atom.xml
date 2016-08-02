@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Java | BBBlog]]></title>
   <link href="http://www.bbramley.com/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://www.bbramley.com/"/>
-  <updated>2015-06-13T21:45:54+10:00</updated>
+  <updated>2016-08-02T16:53:14+10:00</updated>
   <id>http://www.bbramley.com/</id>
   <author>
     <name><![CDATA[Ben Bramley]]></name>
@@ -23,7 +23,7 @@
 <p>An invalid connection can occur for a number of reasons however in my client&rsquo;s case the reason was due to a firewall rule change that had been made between the application server and the database. This firewall rule meant that any connections made on port 1521 (default Oracle port) would be dropped every 5 minutes. Once dropped the connection would become &lsquo;stale&rsquo; and needed to be refreshed. Unfortunately the application, running on WebSphere 6.0, did not handle this scenario very well and would not get a new connection from the pool when the <strong>StaleConnectionException</strong> was thrown.</p>
 
 <p>Instead if would fail horribly until the connection pool was refreshed. Then the cycle would start again. Here is an example of how to deal with this scenario:
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -46,36 +46,30 @@
 <span class='line-number'>21</span>
 <span class='line-number'>22</span>
 <span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="k">try</span> <span class="o">{&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="kt">boolean</span> <span class="n">retry</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-</span><span class='line'><span class="k">while</span><span class="o">(</span> <span class="n">retry</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>    <span class="k">try</span> <span class="o">{</span>
-</span><span class='line'>      <span class="n">Connection</span> <span class="n">conn1</span> <span class="o">=</span> <span class="n">ds1</span><span class="o">.</span><span class="na">getConnection</span><span class="o">();</span>
-</span><span class='line'>      <span class="n">Statement</span> <span class="n">stmt1</span> <span class="o">=</span> <span class="n">conn1</span><span class="o">.</span><span class="na">createStatement</span><span class="o">();</span>
-</span><span class='line'>      <span class="n">ResultSet</span> <span class="n">res</span> <span class="o">=</span> <span class="n">stmt1</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">(</span><span class="n">stmtString</span><span class="o">);</span> <span class="c1">// If all the database work was successful. </span>
-</span><span class='line'>      <span class="n">retry</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>    <span class="k">catch</span> <span class="o">(</span><span class="n">StaleConnectionException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// counter to retry a limited number of times? </span>
-</span><span class='line'>        <span class="n">retry</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span> <span class="c1">// wait? </span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>    <span class="k">catch</span> <span class="o">(</span><span class="n">SQLException</span> <span class="n">sqle</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>    <span class="o">}</span> <span class="c1">// end try-catch </span>
-</span><span class='line'>    <span class="k">finally</span> <span class="o">{</span>
-</span><span class='line'>        <span class="c1">// close result sets </span>
-</span><span class='line'>        <span class="c1">// close statements </span>
-</span><span class='line'>        <span class="c1">// close connection </span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">}</span> <span class="c1">// end while </span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;}</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kt">boolean</span> <span class="n">retry</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+</span><span class='line'>    <span class="k">while</span><span class="o">(</span> <span class="n">retry</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">Connection</span> <span class="n">conn1</span> <span class="o">=</span> <span class="n">ds1</span><span class="o">.</span><span class="na">getConnection</span><span class="o">();</span>
+</span><span class='line'>          <span class="n">Statement</span> <span class="n">stmt1</span> <span class="o">=</span> <span class="n">conn1</span><span class="o">.</span><span class="na">createStatement</span><span class="o">();</span>
+</span><span class='line'>          <span class="n">ResultSet</span> <span class="n">res</span> <span class="o">=</span> <span class="n">stmt1</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">(</span><span class="n">stmtString</span><span class="o">);</span> <span class="c1">// If all the database work was successful.</span>
+</span><span class='line'>          <span class="n">retry</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        <span class="k">catch</span> <span class="o">(</span><span class="n">StaleConnectionException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// counter to retry a limited number of times?</span>
+</span><span class='line'>            <span class="n">retry</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span> <span class="c1">// wait?</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        <span class="k">catch</span> <span class="o">(</span><span class="n">SQLException</span> <span class="n">sqle</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="o">}</span> <span class="c1">// end try-catch</span>
+</span><span class='line'>        <span class="k">finally</span> <span class="o">{</span>
+</span><span class='line'>            <span class="c1">// close result sets</span>
+</span><span class='line'>            <span class="c1">// close statements</span>
+</span><span class='line'>            <span class="c1">// close connection</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>    <span class="o">}</span> <span class="c1">// end while</span>
+</span><span class='line'><span class="o">}</span>
 </span><span class='line'><span class="k">catch</span><span class="o">(</span> <span class="n">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
 </span><span class='line'><span class="o">}</span> <span class="c1">// end try-catch</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Lesson learned here is never assume there will always be valid connections in your connection pool and cater for that in your code.</p>
 ]]></content>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ubuntu | BBBlog]]></title>
   <link href="http://www.bbramley.com/blog/categories/ubuntu/atom.xml" rel="self"/>
   <link href="http://www.bbramley.com/"/>
-  <updated>2015-06-13T21:45:54+10:00</updated>
+  <updated>2016-08-02T16:53:14+10:00</updated>
   <id>http://www.bbramley.com/</id>
   <author>
     <name><![CDATA[Ben Bramley]]></name>
@@ -18,7 +18,7 @@
     <link href="http://www.bbramley.com/blog/2011/01/09/how-to-setup-ubuntu-10-dot-10-on-macbook-air-rev-a/"/>
     <updated>2011-01-09T23:10:49+11:00</updated>
     <id>http://www.bbramley.com/blog/2011/01/09/how-to-setup-ubuntu-10-dot-10-on-macbook-air-rev-a</id>
-    <content type="html"><![CDATA[<p>My Macbook Air is the first edition &ndash; 1.6 GHz, 80GB HD (not SSD)</p>
+    <content type="html"><![CDATA[<p>My Macbook Air is the first edition - 1.6 GHz, 80GB HD (not SSD)</p>
 
 <p>Insert the Ubuntu CD (I have the Superdrive), reboot, hold C to boot from CD and when Ubuntu live comes double click the Install icon.</p>
 
@@ -32,7 +32,7 @@
 
 <p>What an awesome job the grub guys have done supporting EFI too!</p>
 
-<p><strong><strong>UPDATE</strong></strong> Microphone is not working and apparently has never worked &ndash; <a href="https://bugs.launchpad.net/mactel-support/+bug/268301"> https://bugs.launchpad.net/mactel-support/+bug/268301</a></p>
+<p><strong><strong>UPDATE</strong></strong> Microphone is not working and apparently has never worked - <a href="https://bugs.launchpad.net/mactel-support/+bug/268301"> https://bugs.launchpad.net/mactel-support/+bug/268301</a></p>
 ]]></content>
   </entry>
   
